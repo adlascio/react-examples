@@ -1,6 +1,19 @@
 import { useState } from 'react';
 import { createContext } from 'react';
 
+// const [state, dispatch] = useReducer(reducer, initialState);
+
+// const reducer = (state, action) => {
+//   switch(action.type) {
+//     case 'added':
+//       return {count: state.count + 1};
+//     case 'deleted':
+//       return {count: state.count - 1}; 
+//       default:
+//         throw new Error(); 
+//   }
+// }
+
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
