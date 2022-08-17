@@ -10,6 +10,8 @@ import Reducer from './Components/Reducer/Reducer';
 // import Storybook from './Components/Storybook/Storybook';
 import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
 import Reducer from './Components/Reducer/Reducer';
+import Quiz from './Components/Quiz/Quiz';
+// import Reducer from './Components/Reducer/Reducer';
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
       <Reducer />
       <CartClassExercise />
       {/* <Reducer /> */}
+      <Quiz />
     </div>
   );
 }
