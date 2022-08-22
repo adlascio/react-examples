@@ -1,6 +1,7 @@
 import { Provider } from 'react-redux';
 import './App.css';
 import Reducer from './Components/Reducer/Reducer';
+import BlogPosts from './Components/BlogPosts/BlogPosts';
 // import CustomHook from './Components/CustomHook/CustomHook';
 // import Quiz from './Components/Quiz/Quiz';
 // import Class from './Components/Class/Class';
@@ -16,8 +17,9 @@ import Reducer from './Components/Reducer/Reducer';
 import Quiz from './Components/Quiz/Quiz';
 // import Quiz from './Components/Quiz/Quiz';
 // import Reducer from './Components/Reducer/Reducer';
-import store from './Components/TodoRedux/app/store';
-import Todo from './Components/TodoRedux/Todo';
+// import store from './Components/TodoRedux/app/store';
+// import Todo from './Components/TodoRedux/Todo';
+import store from './Components/BlogPosts/app/store';
 function App() {
   return (
     <div className='App'>
@@ -35,7 +37,8 @@ function App() {
       {/* <CustomHook /> */}
       <Provider store={store}>
         {/* <Redux /> */}
-        <Todo />
+        {/* <Todo /> */}
+        <BlogPosts />
       </Provider>
     </div>
   );
