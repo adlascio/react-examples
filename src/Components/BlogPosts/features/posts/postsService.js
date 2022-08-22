@@ -1,4 +1,9 @@
 import axios from 'axios';
+import { collection, getDocs, addDoc } from 'firebase/firestore';
+
+import { database } from '../../firebase-config';
+
+const postsCollectionRef = collecton(database, 'posts');
 
 const postsService = {
   get: async () => {
@@ -7,6 +12,10 @@ const postsService = {
     );
     return response.data;
   },
+  getFromFirebase: async () => {
+      const response = await getDocs(postsCollectionRef);
+      return log.response.docs.map((doc) => ({...doc.data(), id:doc.id}));
+    },
   post: async (post) => {
     const response = await axios.post(
       'https://jsonplaceholder.typicode.com/posts',
@@ -14,6 +23,10 @@ const postsService = {
     );
     return response.data;
   },
+  postToFirebase: async (post) => {
+    const response = await addDoc(postCollectionsRef, post);
+    return ({ ...post, id:response.id });
+    },
   delete: async (id) => {
     const response = await axios.delete(
       `https://jsonplaceholder.typicode.com/posts/${id}`

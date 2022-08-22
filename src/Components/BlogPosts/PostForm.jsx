@@ -15,7 +15,7 @@ export default function PostForm() {
       title: titleRef.current.value,
       body: bodyRef.current.value,
     };
-    dispatch(postAPost(newPost));
+    dispatch(postAPostToFirebase(newPost));
   };
 
   return (

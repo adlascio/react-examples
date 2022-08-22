@@ -9,6 +9,20 @@ export const fetchPosts = createAsyncThunk(
   }
 );
 
+export const fetchPostsFromFirebase = createAsyncThunk(
+  'posts/fetchPosts',
+  async (thunkAPI) => {
+    return await postsService.get();
+  }
+);
+
+export const postAPostsFromFirebase = createAsyncThunk(
+  'posts/fetchPosts',
+  async (post, thunkAPI) => {
+    return await postsService.postToFirebase(post);
+  }
+);
+
 export const postAPost = createAsyncThunk(
   'posts/postAPost',
   async (post, thunkAPI) => {
