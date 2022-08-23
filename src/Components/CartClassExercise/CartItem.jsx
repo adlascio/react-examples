@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { CartContext } from './CartContext';
 import ButtonCart from './ButtonCart';
+=======
+import Button from './Button';
+import { CartContext } from './CartContext';
+>>>>>>> c30b20f3d371bebde482a103f1f49e70a3816c29
 
 export default class CartItem extends Component {
   render() {
@@ -15,6 +20,7 @@ export default class CartItem extends Component {
           padding: '.5rem .3rem',
           gap: '.5rem',
         }}>
+<<<<<<< HEAD
         <ButtonCart
           label=''
           type='remove'
@@ -23,6 +29,14 @@ export default class CartItem extends Component {
           }>
           X
         </ButtonCart>
+=======
+        <Button
+          label=''
+          type='remove'
+          onClick={() => this.context.removeItem(item.id)}>
+          X
+        </Button>
+>>>>>>> c30b20f3d371bebde482a103f1f49e70a3816c29
         <span>{item.title}</span>
 
         <span>{item.quantity}</span>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 
@@ -23,4 +24,25 @@ export default function useAxios(url, method, payload) {
   }, []);
   console.log('data hook', data);
   return { data: data };
+=======
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+export default function useAxios(url, method = 'get', data = null) {
+  const [result, setResult] = useState([]);
+  useEffect(() => {
+    // switch (method) {
+    //   case 'get':
+    //     axios.get(url).then((res) => setResult(res.data));
+    //     return;
+    //   case 'post':
+    //     axios.post(url, data).then((res) => setResult(res.data));
+    //     return;
+    //   default:
+    //     return;
+    // }
+    axios.request({ url, method, data }).then((res) => setResult(res.data));
+  }, []);
+  return { data: result };
+>>>>>>> c30b20f3d371bebde482a103f1f49e70a3816c29
 }

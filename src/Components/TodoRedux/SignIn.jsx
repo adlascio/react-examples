@@ -1,6 +1,7 @@
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { signUp } from './features/user/userSlice';
+import { signIn, signOut, signInGoogle } from './features/user/userSlice';
 
 export default function Signup() {
   const emailInputRef = useRef();
@@ -10,9 +11,8 @@ export default function Signup() {
     e.preventDefault();
     const email = emailInputRef.current.value;
     const password = passwordInputRef.current.value;
-    const newUser = { email, password };
-    console.log(password);
-    dispatch(signUp(newUser));
+    const user = { email, password };
+    dispatch(signIn(user));
   };
   //   useEffect(() => {
   //     const unsubscribe = onAuthStateChanged(auth, (currentUser) =>
@@ -22,7 +22,7 @@ export default function Signup() {
   //   }, []);
   return (
     <div>
-      <h2>Signup</h2>
+      <h2>SignIn</h2>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor='emailInput'>Email</label>
@@ -31,9 +31,15 @@ export default function Signup() {
         <label htmlFor='passwordInput'>Password</label>
         <input type='password' ref={passwordInputRef} />
         <div>
-          <button>Sign up!</button>
+          <button>Sign in!</button>
         </div>
       </form>
+      <button onClick={() => dispatch(signInGoogle())}>
+        Sign in with Google
+      </button>
+      <div>
+        <button onClick={() => dispatch(signOut())}>Sign out!</button>
+      </div>
     </div>
   );
 }

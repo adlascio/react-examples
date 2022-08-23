@@ -3,6 +3,12 @@ import { useContext } from 'react';
 import { UserContext } from './UserContext';
 
 export default function Navbar(props) {
+<<<<<<< HEAD
+=======
+  //check if value of Provider has user prop
+  //if yes user = value.user
+  //if not user = undefined
+>>>>>>> c30b20f3d371bebde482a103f1f49e70a3816c29
   const { user } = useContext(UserContext);
   console.log('render navbar');
   return (

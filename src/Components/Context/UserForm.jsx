@@ -1,6 +1,10 @@
 import React from 'react';
+<<<<<<< HEAD
 import { useState } from 'react';
 import { useContext } from 'react';
+=======
+import { useState, useContext } from 'react';
+>>>>>>> c30b20f3d371bebde482a103f1f49e70a3816c29
 import { UserContext } from './UserContext';
 
 export default function UserForm(props) {
