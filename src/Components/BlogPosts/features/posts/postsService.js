@@ -1,10 +1,5 @@
 import axios from 'axios';
 import { collection, getDocs, addDoc } from 'firebase/firestore';
-
-import { database } from '../../firebase-config';
-
-const postsCollectionRef = collecton(database, 'posts');
-
 import {
   collection,
   getDocs,
@@ -27,21 +22,8 @@ const postsService = {
   },
   getFromFirebase: async () => {
       const response = await getDocs(postsCollectionRef);
-      return log.response.docs.map((doc) => ({...doc.data(), id:doc.id}));
+      return response.docs.map((doc) => ({...doc.data(), id:doc.id}));
     },
-    try {
-      console.log('here');
-      const response = await getDocs(postsCollectionRef);
-      const parseDocs = response.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      console.log(parseDocs);
-      return parseDocs;
-    } catch (error) {
-      console.log('error', error);
-    }
-  },
   post: async (post) => {
     const response = await axios.post(
       'https://jsonplaceholder.typicode.com/posts',
@@ -53,9 +35,6 @@ const postsService = {
     const response = await addDoc(postCollectionsRef, post);
     return ({ ...post, id:response.id });
     },
-    const response = await addDoc(postsCollectionRef, post);
-    return { ...post, id: response.id };
-  },
   delete: async (id) => {
     const response = await axios.delete(
       `https://jsonplaceholder.typicode.com/posts/${id}`
