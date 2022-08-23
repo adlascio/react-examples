@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+import React from 'react';
+import PostFeed from './PostFeed';
+import PostForm from './PostForm';
+
+export default function BlogPosts() {
+  return (
+    <div>
+      <h1>BlogPosts</h1>
+      <PostForm />
+      <PostFeed />
+=======
 import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -44,6 +56,7 @@ export default function BlogPosts() {
           <Post post={post} />
         ))}
       </section>
+>>>>>>> c30b20f3d371bebde482a103f1f49e70a3816c29
     </div>
   );
 }

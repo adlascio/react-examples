@@ -1,3 +1,32 @@
+<<<<<<< HEAD
+// JS Class - blueprint (template)
+
+class Color {
+  constructor(red, green, blue) {
+    this.red = red;
+    this.green = green;
+    this.blue = blue;
+  }
+  paint() {
+    console.log('painting');
+  }
+}
+
+const color1 = new Color(255, 0, 150);
+const color2 = new Color(255, 0, 150);
+const color3 = new Color(255, 0, 150);
+
+console.log(color1.red); //255
+color3.paint(); // painting
+
+class Rectangle {
+  constructor(height, len) {
+    this.height = height;
+    this.len = len;
+  }
+  area() {
+    return this.height * this.len;
+=======
 // Class in JS? - template / blueprint
 
 class Rectangle {
@@ -7,10 +36,24 @@ class Rectangle {
   }
   area() {
     return this.len * this.width;
+>>>>>>> c30b20f3d371bebde482a103f1f49e70a3816c29
   }
 }
 
 class Cube extends Rectangle {
+<<<<<<< HEAD
+  constructor(height, len, width) {
+    super(height, len);
+    this.width = width;
+  }
+  volume() {
+    return this.area() * this.width;
+  }
+}
+
+const cube1 = new Cube(2, 3, 5);
+console.log(cube1.volume());
+=======
   constructor(len, width, heigth) {
     super(len, width);
     this.heigth = heigth;
@@ -29,3 +72,4 @@ const cube1 = new Cube(3, 4, 5);
 cube1.volume(); //
 console.log('volume', cube1.volume());
 console.log('area', cube1.area());
+>>>>>>> c30b20f3d371bebde482a103f1f49e70a3816c29

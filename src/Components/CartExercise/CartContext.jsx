@@ -1,3 +1,37 @@
+<<<<<<< HEAD
+import { useState } from 'react';
+import { createContext } from 'react';
+
+export const CartContext = createContext();
+
+export const CartProvider = ({ children }) => {
+  const [cartList, setCartList] = useState([]);
+  const addToCart = (product) => {
+    setCartList((prevState) => [...prevState, product]);
+  };
+  const calculateTotal = () => {
+    return cartList.reduce((total, item) => {
+      return total + item.price;
+    }, 0);
+  };
+  /*
+  [{id:1},{id:2}, ...]
+  [{id:2}, ...]
+  */
+  const removeItem = (id) => {
+    setCartList(
+      //   cartList.filter((item) => {
+      //     return item.id !== id;
+      //   })
+      // same thing
+      // !==
+      cartList.filter((item) => item.id !== id)
+    );
+  };
+  return (
+    <CartContext.Provider
+      value={{ cartList, addToCart, calculateTotal, removeItem }}>
+=======
 import { useReducer, useState } from 'react';
 import { createContext } from 'react';
 import { ADD_TO_CART, REMOVE_ITEM, RESET_CART } from './actions';
@@ -79,6 +113,7 @@ export const CartProvider = ({ children }) => {
   };
   return (
     <CartContext.Provider value={{ state, dispatch, calculateTotal }}>
+>>>>>>> c30b20f3d371bebde482a103f1f49e70a3816c29
       {children}
     </CartContext.Provider>
   );
