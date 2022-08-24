@@ -5,6 +5,8 @@ import {
   addDoc,
   doc,
   deleteDoc,
+  where,
+  query,
 } from 'firebase/firestore';
 
 import { db } from '../../../BlogPosts/firebase-config';
@@ -15,8 +17,11 @@ const todoService = {
   get: async () => {
     return await axios.get('https://jsonplaceholder.typicode.com/todos');
   },
-  getFromFirebase: async () => {
-    return await getDocs(tasksCollectionRef);
+  getFromFirebase: async (userId) => {
+    console.log('userId', userId);
+    if (!userId) return await getDocs(tasksCollectionRef);
+    const q = query(tasksCollectionRef, where('userId', '==', userId));
+    return await getDocs(q);
   },
   addToFirebase: async (task) => {
     const response = await addDoc(tasksCollectionRef, task);

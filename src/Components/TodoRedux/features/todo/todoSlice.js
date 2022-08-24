@@ -24,9 +24,10 @@ export const addToFirebase = createAsyncThunk(
 
 export const fetchTodosFromFirebase = createAsyncThunk(
   'todo/fetchTodosFromFirebase',
-  async () => {
+  async (userId) => {
     try {
-      const response = await todoService.getFromFirebase();
+      console.log('action', userId);
+      const response = await todoService.getFromFirebase(userId);
       return response.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     } catch (error) {
       console.log(error.message);

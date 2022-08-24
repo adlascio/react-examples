@@ -5,16 +5,16 @@ import {
   addToFirebase,
   removeFromFirebase,
 } from './features/todo/todoSlice';
-import {
-  signOut,
-  loginWithGoogle,
-  loginWithGithub,
-} from './features/user/userSlice';
+import { signOut } from './features/user/userSlice';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
 // import { actions } from './features/todo/todoSlice';
 export default function Todo() {
   const { list, isLoading, isError, message } = useSelector(
     (state) => state.todo
   );
+  const userId = useSelector((state) => state.user.info.id);
+  console.log('userId component', userId);
   const dispatch = useDispatch();
   const inputRef = useRef();
 
@@ -23,13 +23,14 @@ export default function Todo() {
     const newTask = {
       id: list.length + 1,
       title: inputRef.current.value,
+      userId,
     };
     dispatch(addToFirebase(newTask));
   };
 
   useEffect(() => {
-    dispatch(fetchTodosFromFirebase());
-  }, [dispatch]);
+    dispatch(fetchTodosFromFirebase(userId));
+  }, [dispatch, userId]);
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
@@ -44,9 +45,7 @@ export default function Todo() {
   return (
     <div>
       <h1>Todo List</h1>
-
       <button onClick={() => dispatch(signOut())}>Sign Out</button>
-
       <form onSubmit={handleSubmit}>
         <label htmlFor='taskInput'>New Task:</label>
         <input type='text' ref={inputRef} />

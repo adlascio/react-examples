@@ -7,35 +7,36 @@ import {
 } from './features/user/userSlice';
 
 export default function SignIn() {
-  const signInEmailRef = useRef();
-  const signInPasswordRef = useRef();
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
   const dispatch = useDispatch();
-  const signIn = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const email = signInEmailRef.current.value;
-    const password = signInPasswordRef.current.value;
+    const email = emailInputRef.current.value;
+    const password = passwordInputRef.current.value;
     const user = { email, password };
     dispatch(login(user));
   };
   return (
-    <>
-      <form onSubmit={signIn}>
+    <div>
+      <h2>SignIn</h2>
+      <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor=''>Email</label>
-          <input type='email' ref={signInEmailRef} />
+          <label htmlFor='emailInput'>Email</label>
+          <input type='email' ref={emailInputRef} />
         </div>
+        <label htmlFor='passwordInput'>Password</label>
+        <input type='password' ref={passwordInputRef} />
         <div>
-          <label htmlFor=''>Password</label>
-          <input type='password' ref={signInPasswordRef} />
+          <button>Sign in!</button>
         </div>
-        <button>Sign In!</button>
       </form>
       <button onClick={() => dispatch(loginWithGoogle())}>
-        Login with Google
+        Sign in with Google
       </button>
       <button onClick={() => dispatch(loginWithGithub())}>
         Login with Github
       </button>
-    </>
+    </div>
   );
 }

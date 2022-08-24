@@ -13,6 +13,7 @@ import BlogPosts from './Components/BlogPosts/BlogPosts';
 // import Reducer from './Components/Reducer/Reducer';
 // import store from './Components/Redux/store';
 import store from './Components/TodoRedux/app/store';
+import AppTodo from './Components/TodoRedux/AppTodo';
 import Todo from './Components/TodoRedux/Todo';
 // import store from './Components/BlogPosts/app/store';
 function App() {
@@ -29,8 +30,8 @@ function App() {
       {/* <CustomHook /> */}
       <Provider store={store}>
         {/* <Redux /> */}
-        <Todo />
-        {/* <BlogPosts /> */}
+        {/* <Todo /> */}
+        <AppTodo /> {/* <BlogPosts /> */}
       </Provider>
     </div>
   );
