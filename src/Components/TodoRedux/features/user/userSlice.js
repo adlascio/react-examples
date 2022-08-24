@@ -1,44 +1,76 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import userService from './userService';
 
-export const signUp = createAsyncThunk('user/signUp', async (newUser) => {
-  return await userService.signUp(newUser);
-});
-export const signIn = createAsyncThunk('user/signIn', async (user) => {
-  return await userService.signIn(user);
+export const createUser = createAsyncThunk(
+  'user/createUser',
+  async (newUser) => {
+    return await userService.signUp(newUser);
+  }
+);
+
+export const login = createAsyncThunk('user/login', async (user) => {
+  return await userService.login(user);
 });
 
 export const signOut = createAsyncThunk('user/signOut', async () => {
   return await userService.signOut();
 });
 
-export const signInGoogle = createAsyncThunk('user/signInGoogle', async () => {
-  return await userService.signInGoogle();
-});
+export const loginWithGoogle = createAsyncThunk(
+  'user/loginWithGoogle',
+  async () => {
+    return await userService.loginWithGoogle();
+  }
+);
+
+export const loginWithGithub = createAsyncThunk(
+  'user/loginWithGithub',
+  async () => {
+    return await userService.loginWithGithub();
+  }
+);
 
 const userSlice = createSlice({
   name: 'user',
   initialState: {
     info: {
+      id: '',
       email: '',
     },
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(signUp.fulfilled, (state, action) => {
-        state.info.email = action.payload.user.email;
+      .addCase(createUser.fulfilled, (state, action) => {
+        state.info = {
+          id: action.payload.user.uid,
+          email: action.payload.user.email,
+        };
       })
-      .addCase(signIn.fulfilled, (state, action) => {
-        console.log(action.payload.user.email);
-        state.info.email = action.payload.user.email;
+      .addCase(login.fulfilled, (state, action) => {
+        state.info = {
+          id: action.payload.user.uid,
+          email: action.payload.user.email,
+        };
       })
       .addCase(signOut.fulfilled, (state, action) => {
-        state.info.email = '';
+        state.info = {
+          id: '',
+          email: '',
+        };
       })
-      .addCase(signInGoogle.fulfilled, (state, action) => {
-        console.log(action.payload.user);
-        state.info.email = action.payload.user.email;
+      .addCase(loginWithGoogle.fulfilled, (state, action) => {
+        console.log('google', action.payload);
+        state.info = {
+          id: action.payload.user.uid,
+          email: action.payload.user.email,
+        };
+      })
+      .addCase(loginWithGithub.fulfilled, (state, action) => {
+        console.log('google', action.payload);
+        state.info = {
+          id: action.payload.user.uid,
+          email: action.payload.user.email,
+        };
       });
   },
 });

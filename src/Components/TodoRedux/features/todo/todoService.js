@@ -13,7 +13,7 @@ const tasksCollectionRef = collection(db, 'tasks');
 
 const todoService = {
   get: async () => {
-    return await axios.get('https://jsonplaceholder.typicode.com/todosaaa');
+    return await axios.get('https://jsonplaceholder.typicode.com/todos');
   },
   getFromFirebase: async () => {
     return await getDocs(tasksCollectionRef);

@@ -52,7 +52,7 @@ export const todoSlice = createSlice({
   },
   reducers: {
     add: (state, action) => {
-      state.list.push(action.payload);
+      state.list = [action.payload, ...state.list];
     },
     remove: (state, action) => {
       state.list = state.list.filter((task) => task.id !== action.payload);
@@ -76,18 +76,19 @@ export const todoSlice = createSlice({
         state.isError = true;
       })
       .addCase(fetchTodosFromFirebase.fulfilled, (state, action) => {
-        if (action.payload && action.payload.message) {
+        if (action.payload.message) {
           state.message = action.payload.message;
         }
-        console.log(action.payload);
         state.list = action.payload;
         state.isLoading = false;
       })
       .addCase(addToFirebase.fulfilled, (state, action) => {
-        state.list.push(action.payload);
+        state.list = [action.payload, ...state.list];
+        state.isLoading = false;
       })
       .addCase(removeFromFirebase.fulfilled, (state, action) => {
         state.list = state.list.filter((task) => task.id !== action.payload);
+        state.isLoading = false;
       });
   },
 });

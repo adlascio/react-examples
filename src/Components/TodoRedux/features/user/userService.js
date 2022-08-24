@@ -1,45 +1,36 @@
 import {
   createUserWithEmailAndPassword,
-  GoogleAuthProvider,
   signInWithEmailAndPassword,
-  signInWithPopup,
   signOut,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
 } from 'firebase/auth';
 import { auth } from '../../../BlogPosts/firebase-config';
 
-const provider = new GoogleAuthProvider();
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const userService = {
   signUp: async (newUser) => {
-    try {
-      const { email, password } = newUser;
-      console.log(email, password);
-      return await createUserWithEmailAndPassword(auth, email, password);
-    } catch (e) {
-      console.log('error', e.message);
-    }
+    const { email, password } = newUser;
+    return await createUserWithEmailAndPassword(auth, email, password);
   },
-  signIn: async (user) => {
-    try {
-      const { email, password } = user;
-      console.log(email, password);
-      return await signInWithEmailAndPassword(auth, email, password);
-    } catch (e) {
-      console.log('error', e.message);
-    }
+  login: async (user) => {
+    const { email, password } = user;
+    return signInWithEmailAndPassword(auth, email, password);
   },
   signOut: async () => {
-    try {
-      await signOut(auth);
-    } catch (e) {
-      console.log('error', e.message);
-    }
+    return await signOut(auth);
   },
-  signInGoogle: async () => {
+  loginWithGoogle: async () => {
+    return await signInWithPopup(auth, googleProvider);
+  },
+  loginWithGithub: async () => {
     try {
-      return await signInWithPopup(auth, provider);
+      return await signInWithPopup(auth, githubProvider);
     } catch (e) {
-      console.log('error', e.message);
+      console.log('e', e);
     }
   },
 };
