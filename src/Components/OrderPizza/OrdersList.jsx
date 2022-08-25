@@ -17,7 +17,9 @@ const OrdersList = () => {
           <td>{order.total}</td>
           <td>{order.status}</td>
           <td>
-            <button onClick={() => updateStatus(order.id)}>Next Step</button>
+            <button onClick={() => updateStatus(order.id, order.status)}>
+              Next Step
+            </button>
           </td>
         </tr>
       ))}
