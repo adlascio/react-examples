@@ -14,9 +14,9 @@ export const fetchPosts = createAsyncThunk(
 );
 export const fetchPostsFromFirebase = createAsyncThunk(
   'posts/fetchPostsFromFirebase',
-  async () => {
+  async (userId) => {
     try {
-      const data = await postsService.getFromFirebase();
+      const data = await postsService.getFromFirebase(userId);
       return data;
     } catch (e) {
       console.log('error', e);

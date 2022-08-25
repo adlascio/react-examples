@@ -16,6 +16,7 @@ import './App.css';
 // import Todo from './Components/TodoRedux/Todo';
 // import BlogPosts from './Components/BlogPosts/BlogPosts';
 // import store from './Components/BlogPosts/app/store';
+// import BlogApp from './Components/BlogPosts/BlogApp';
 import OrderPizza from './Components/OrderPizza/OrderPizza';
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       {/* <Redux /> */}
       {/* <Todo /> */}
       {/* <AppTodo /> */}
+      {/* <BlogApp /> */}
       {/* <BlogPosts /> */}
       {/* </Provider> */}
     </div>
