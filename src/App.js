@@ -1,5 +1,7 @@
 // import { Provider } from 'react-redux';
 import './App.css';
+import Reducer from './Components/Reducer/Reducer';
+
 // import BlogPosts from './Components/BlogPosts/BlogPosts';
 // import CustomHook from './Components/CustomHook/CustomHook';
 // import Quiz from './Components/Quiz/Quiz';
@@ -10,13 +12,16 @@ import './App.css';
 // import CartExercise from './Components/CartExercise/CartExercise';
 // import Redux from './Components/Redux/Redux';
 // import CartClassExercise from './Components/CartClassExercise/CartClassExercise';
+// import Storybook from './Components/Storybook/Storybook';
 // import Reducer from './Components/Reducer/Reducer';
 // import store from './Components/TodoRedux/app/store';
 // import AppTodo from './Components/TodoRedux/AppTodo';
 // import Todo from './Components/TodoRedux/Todo';
 // import store from './Components/BlogPosts/app/store';
 // import BlogApp from './Components/BlogPosts/BlogApp';
+
 import OrderPizza from './Components/OrderPizza/OrderPizza';
+
 function App() {
   return (
     <div className='App'>
@@ -26,6 +31,9 @@ function App() {
       {/* <FifaTourney /> */}
       {/* <Class /> */}
       {/* <CartClassExercise /> */}
+
+      {/* <Storybook /> */}
+      <Reducer />
       {/* <Reducer /> */}
       {/* <Quiz /> */}
       {/* <CustomHook /> */}
