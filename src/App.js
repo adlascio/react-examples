@@ -1,5 +1,5 @@
-import './App.css';
-import Reducer from './Components/Reducer/Reducer';
+import "./App.css";
+import Reducer from "./Components/Reducer/Reducer";
 // import Class from './Components/Class/Class';
 // import Buttons from './Components/Buttons/Buttons';
 // import FifaTourney from './Components/FifaTourney/FifaTourney';
@@ -10,7 +10,7 @@ import Reducer from './Components/Reducer/Reducer';
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
       {/* <Context /> */}
       {/* <CartExercise /> */}
       {/* <Buttons /> */}
@@ -19,6 +19,7 @@ function App() {
       {/* <CartClassExercise /> */}
       {/* <Storybook /> */}
       <Reducer />
+      {process.env.REACT_APP_API_KEY}
     </div>
   );
 }
